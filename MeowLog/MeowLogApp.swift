@@ -11,9 +11,11 @@ struct MeowLogApp: App {
             HealthRecord.self,
             KittenPhoto.self,
         ])
+        // CloudKit 自动同步：需要在 Xcode 中启用 iCloud capability
         let modelConfiguration = ModelConfiguration(
             schema: schema,
-            isStoredInMemoryOnly: false
+            isStoredInMemoryOnly: false,
+            cloudKitDatabase: .automatic
         )
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
