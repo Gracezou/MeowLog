@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 import PhotosUI
 
 /// 猫咪相册网格：上传/查看/删除照片
