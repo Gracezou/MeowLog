@@ -1,5 +1,4 @@
 import Foundation
-import UIKit
 
 /// Supabase Storage REST API 服务
 /// 使用前需配置 supabaseURL 和 supabaseKey
@@ -46,9 +45,9 @@ actor SupabaseService {
 
     // MARK: - Download
 
-    /// 获取照片的公开 URL
-    func publicURL(for path: String) -> URL? {
-        URL(string: "\(supabaseURL)/storage/v1/object/public/\(bucketName)/\(path)")
+    /// 获取照片的公开 URL（nonisolated，可在同步上下文中调用）
+    nonisolated func publicURL(for path: String) -> URL? {
+        URL(string: "https://YOUR_PROJECT.supabase.co/storage/v1/object/public/kitten-photos/\(path)")
     }
 
     /// 下载照片数据

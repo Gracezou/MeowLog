@@ -191,5 +191,4 @@ struct PhotoGridView: View {
     }
 }
 
-// KittenPhoto 需要遵循 Identifiable
-extension KittenPhoto: Identifiable {}
+// KittenPhoto 已通过 PersistentModel 协议自动遵循 Identifiable
