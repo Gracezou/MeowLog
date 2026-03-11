@@ -5,10 +5,10 @@ import Foundation
 actor SupabaseService {
     static let shared = SupabaseService()
 
-    // TODO: 替换为实际的 Supabase 项目配置
-    private let supabaseURL = "https://YOUR_PROJECT.supabase.co"
-    private let supabaseKey = "YOUR_ANON_KEY"
-    private let bucketName = "kitten-photos"
+    // nonisolated let 允许在同步上下文访问
+    nonisolated let supabaseURL = "https://jkvyfjnctgtcqcccllfx.supabase.co"
+    nonisolated let supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imprdnlmam5jdGd0Y3FjY2NsbGZ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyMjAwNzQsImV4cCI6MjA4ODc5NjA3NH0.S05KUs0f5SmEuVLvaKqQDmQKAE2muM9YP91C6_kcokE"
+    nonisolated let bucketName = "kitten-photos"
 
     private var session: URLSession {
         let config = URLSessionConfiguration.default
@@ -47,7 +47,7 @@ actor SupabaseService {
 
     /// 获取照片的公开 URL（nonisolated，可在同步上下文中调用）
     nonisolated func publicURL(for path: String) -> URL? {
-        URL(string: "https://YOUR_PROJECT.supabase.co/storage/v1/object/public/kitten-photos/\(path)")
+        URL(string: "\(supabaseURL)/storage/v1/object/public/\(bucketName)/\(path)")
     }
 
     /// 下载照片数据
