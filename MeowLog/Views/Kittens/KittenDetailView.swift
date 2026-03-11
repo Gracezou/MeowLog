@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 struct KittenDetailView: View {
     @Environment(\.modelContext) private var modelContext
