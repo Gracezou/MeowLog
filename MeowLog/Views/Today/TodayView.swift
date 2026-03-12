@@ -77,7 +77,7 @@ struct TodayView: View {
 
     private var unwieghedAlert: some View {
         let unweighed = kittens.filter { kitten in
-            !kitten.weightRecords.contains { $0.date.isToday }
+            !(kitten.weightRecords ?? []).contains { $0.date.isToday }
         }
         return Group {
             if !unweighed.isEmpty {
@@ -174,7 +174,7 @@ struct TodayView: View {
                     .font(.subheadline)
                     .fontWeight(.medium)
                 HStack(spacing: 4) {
-                    ForEach(log.kittens) { kitten in
+                    ForEach((log.kittens ?? [])) { kitten in
                         Text(kitten.name)
                             .font(.caption)
                             .padding(.horizontal, 6)

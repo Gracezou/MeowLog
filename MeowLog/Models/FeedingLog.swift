@@ -34,7 +34,7 @@ final class FeedingLog {
     var notes: String = ""
 
     /// 多对多：一次喂食可能涉及多只猫
-    var kittens: [Kitten] = []
+    var kittens: [Kitten]? = []
 
     init(
         feedingType: FeedingType = .bottle,

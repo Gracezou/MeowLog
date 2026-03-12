@@ -6,7 +6,7 @@ struct WeightChartView: View {
     let kitten: Kitten
 
     private var records: [WeightRecord] {
-        kitten.weightRecords.sorted { $0.date < $1.date }
+        (kitten.weightRecords ?? []).sorted { $0.date < $1.date }
     }
 
     var body: some View {

@@ -37,7 +37,7 @@ struct KittenListView: View {
                 Button("删除", role: .destructive) {
                     if let kitten = kittenToDelete {
                         // 级联清理 Supabase 照片
-                        let photoPaths = kitten.photos.map(\.remoteURL)
+                        let photoPaths = (kitten.photos ?? []).map(\.remoteURL)
                         Task {
                             await SupabaseService.shared.deleteAllPhotos(
                                 for: kitten.name,

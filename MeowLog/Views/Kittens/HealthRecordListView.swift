@@ -9,7 +9,7 @@ struct HealthRecordListView: View {
     @State private var showDeleteAlert = false
 
     private var records: [HealthRecord] {
-        kitten.healthRecords.sorted { $0.date > $1.date }
+        (kitten.healthRecords ?? []).sorted { $0.date > $1.date }
     }
 
     var body: some View {

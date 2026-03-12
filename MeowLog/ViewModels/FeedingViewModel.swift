@@ -24,7 +24,7 @@ final class FeedingViewModel {
     /// 今日喂食总量（毫升）
     func todayTotalAmount(for kitten: Kitten) -> Double {
         let today = DateHelpers.startOfToday
-        return kitten.feedingLogs
+        return (kitten.feedingLogs ?? [])
             .filter { $0.date >= today }
             .reduce(0) { $0 + $1.amount }
     }
@@ -32,13 +32,13 @@ final class FeedingViewModel {
     /// 今日喂食次数
     func todayFeedingCount(for kitten: Kitten) -> Int {
         let today = DateHelpers.startOfToday
-        return kitten.feedingLogs.filter { $0.date >= today }.count
+        return (kitten.feedingLogs ?? []).filter { $0.date >= today }.count
     }
 
     /// 获取今日所有喂食记录（按时间倒序）
     func todayFeedings(kittens: [Kitten]) -> [FeedingLog] {
         let today = DateHelpers.startOfToday
-        let allLogs = Set(kittens.flatMap(\.feedingLogs))
+        let allLogs = Set(kittens.flatMap { $0.feedingLogs ?? [] })
         return allLogs
             .filter { $0.date >= today }
             .sorted { $0.date > $1.date }

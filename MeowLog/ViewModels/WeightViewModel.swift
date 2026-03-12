@@ -34,7 +34,7 @@ final class WeightViewModel {
 
     /// 获取排序后的体重记录
     func sortedRecords(for kitten: Kitten) -> [WeightRecord] {
-        kitten.weightRecords.sorted { $0.date < $1.date }
+        (kitten.weightRecords ?? []).sorted { $0.date < $1.date }
     }
 
     /// 每日增重（克/天）

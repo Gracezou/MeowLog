@@ -42,16 +42,16 @@ final class Kitten {
     // MARK: - Relationships
 
     @Relationship(deleteRule: .cascade, inverse: \WeightRecord.kitten)
-    var weightRecords: [WeightRecord] = []
+    var weightRecords: [WeightRecord]? = []
 
     @Relationship(deleteRule: .cascade, inverse: \HealthRecord.kitten)
-    var healthRecords: [HealthRecord] = []
+    var healthRecords: [HealthRecord]? = []
 
     @Relationship(deleteRule: .cascade, inverse: \KittenPhoto.kitten)
-    var photos: [KittenPhoto] = []
+    var photos: [KittenPhoto]? = []
 
     @Relationship(inverse: \FeedingLog.kittens)
-    var feedingLogs: [FeedingLog] = []
+    var feedingLogs: [FeedingLog]? = []
 
     init(
         name: String,
@@ -84,7 +84,7 @@ final class Kitten {
 
     /// 最新体重记录
     var latestWeight: WeightRecord? {
-        weightRecords.sorted { $0.date > $1.date }.first
+        (weightRecords ?? []).sorted { $0.date > $1.date }.first
     }
 
     /// 颜色索引（基于排序顺序）

@@ -104,12 +104,12 @@ struct OverviewView: View {
 
     private var weighedTodayCount: Int {
         kittens.filter { kitten in
-            kitten.weightRecords.contains { $0.date.isToday }
+            (kitten.weightRecords ?? []).contains { $0.date.isToday }
         }.count
     }
 
     private var fedTodayCount: Int {
         let today = DateHelpers.startOfToday
-        return kittens.flatMap(\.feedingLogs).filter { $0.date >= today }.count
+        return kittens.flatMap { $0.feedingLogs ?? [] }.filter { $0.date >= today }.count
     }
 }

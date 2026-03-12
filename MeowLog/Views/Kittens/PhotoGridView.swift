@@ -16,7 +16,7 @@ struct PhotoGridView: View {
     private let columns = Array(repeating: GridItem(.flexible(), spacing: 4), count: 3)
 
     private var photos: [KittenPhoto] {
-        kitten.photos.sorted { $0.date > $1.date }
+        (kitten.photos ?? []).sorted { $0.date > $1.date }
     }
 
     var body: some View {

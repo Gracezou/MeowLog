@@ -62,7 +62,7 @@ struct StatsView: View {
                 .font(.headline)
                 .padding(.horizontal)
 
-            let kittensWithRecords = kittens.filter { !$0.weightRecords.isEmpty }
+            let kittensWithRecords = kittens.filter { !($0.weightRecords ?? []).isEmpty }
             if kittensWithRecords.isEmpty {
                 Text("暂无体重记录")
                     .font(.subheadline)
@@ -72,7 +72,7 @@ struct StatsView: View {
             } else {
                 Chart {
                     ForEach(kittensWithRecords) { kitten in
-                        let records = kitten.weightRecords.sorted { $0.date < $1.date }
+                        let records = (kitten.weightRecords ?? []).sorted { $0.date < $1.date }
                         ForEach(records, id: \.date) { record in
                             LineMark(
                                 x: .value("日龄", record.dayAge),

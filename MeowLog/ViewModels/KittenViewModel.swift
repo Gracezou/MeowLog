@@ -17,7 +17,7 @@ final class KittenViewModel {
 
     /// 获取排序后的健康记录
     func sortedHealthRecords(for kitten: Kitten) -> [HealthRecord] {
-        kitten.healthRecords.sorted { $0.date > $1.date }
+        (kitten.healthRecords ?? []).sorted { $0.date > $1.date }
     }
 
     /// 添加健康记录

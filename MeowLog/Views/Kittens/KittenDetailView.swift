@@ -116,7 +116,7 @@ struct KittenDetailView: View {
             WeightChartView(kitten: kitten)
 
             // 体重记录列表
-            let records = kitten.weightRecords.sorted { $0.date > $1.date }
+            let records = (kitten.weightRecords ?? []).sorted { $0.date > $1.date }
             if !records.isEmpty {
                 VStack(alignment: .leading, spacing: 8) {
                     Text("记录历史")
@@ -148,7 +148,7 @@ struct KittenDetailView: View {
     // MARK: - Feeding Tab
 
     private var feedingTab: some View {
-        let logs = kitten.feedingLogs.sorted { $0.date > $1.date }
+        let logs = (kitten.feedingLogs ?? []).sorted { $0.date > $1.date }
         return VStack(alignment: .leading, spacing: 12) {
             if logs.isEmpty {
                 ContentUnavailableView(

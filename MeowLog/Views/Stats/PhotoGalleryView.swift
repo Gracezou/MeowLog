@@ -9,7 +9,7 @@ struct PhotoGalleryView: View {
         var grouped: [Int: [(kitten: Kitten, photo: KittenPhoto)]] = [:]
 
         for kitten in kittens {
-            for photo in kitten.photos {
+            for photo in (kitten.photos ?? []) {
                 let week = photo.dayAge / 7
                 grouped[week, default: []].append((kitten: kitten, photo: photo))
             }
