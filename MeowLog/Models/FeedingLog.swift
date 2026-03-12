@@ -27,11 +27,11 @@ enum FeedingType: String, Codable, CaseIterable, Identifiable {
 
 @Model
 final class FeedingLog {
-    var feedingType: FeedingType
+    var feedingType: FeedingType = FeedingType.bottle
     /// 喂食量（毫升）
-    var amount: Double
-    var date: Date
-    var notes: String
+    var amount: Double = 0.0
+    var date: Date = Date()
+    var notes: String = ""
 
     /// 多对多：一次喂食可能涉及多只猫
     var kittens: [Kitten] = []

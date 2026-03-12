@@ -23,21 +23,21 @@ enum Gender: String, Codable, CaseIterable, Identifiable {
 
 @Model
 final class Kitten {
-    var name: String
-    var gender: Gender
-    var birthDate: Date
-    var colorMarkings: String  // 毛色特征
-    var notes: String
+    var name: String = ""
+    var gender: Gender = Gender.unknown
+    var birthDate: Date = Date()
+    var colorMarkings: String = ""
+    var notes: String = ""
 
     /// 头像图片数据（< 200KB，压缩后的 JPEG）
     @Attribute(.externalStorage)
-    var avatarData: Data?
+    var avatarData: Data? = nil
 
     /// 显示排序
-    var sortOrder: Int
+    var sortOrder: Int = 0
 
     /// 创建时间
-    var createdAt: Date
+    var createdAt: Date = Date()
 
     // MARK: - Relationships
 

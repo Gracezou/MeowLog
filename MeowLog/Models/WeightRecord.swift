@@ -4,11 +4,11 @@ import SwiftData
 @Model
 final class WeightRecord {
     /// 体重（克）
-    var weight: Double
-    var date: Date
-    var notes: String
+    var weight: Double = 0.0
+    var date: Date = Date()
+    var notes: String = ""
 
-    var kitten: Kitten?
+    var kitten: Kitten? = nil
 
     init(weight: Double, date: Date = Date(), notes: String = "", kitten: Kitten? = nil) {
         self.weight = weight

@@ -31,17 +31,17 @@ enum HealthType: String, Codable, CaseIterable, Identifiable {
 
 @Model
 final class HealthRecord {
-    var healthType: HealthType
-    var title: String
-    var details: String
-    var date: Date
+    var healthType: HealthType = HealthType.other
+    var title: String = ""
+    var details: String = ""
+    var date: Date = Date()
 
     /// 是否需要提醒
-    var reminderEnabled: Bool
+    var reminderEnabled: Bool = false
     /// 提醒日期
-    var reminderDate: Date?
+    var reminderDate: Date? = nil
 
-    var kitten: Kitten?
+    var kitten: Kitten? = nil
 
     init(
         healthType: HealthType = .other,

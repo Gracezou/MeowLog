@@ -4,15 +4,15 @@ import SwiftData
 @Model
 final class KittenPhoto {
     /// Supabase Storage 中的远程 URL
-    var remoteURL: String
+    var remoteURL: String = ""
     /// 本地缓存文件名
-    var localFileName: String
+    var localFileName: String = ""
     /// 拍摄/上传日期
-    var date: Date
+    var date: Date = Date()
     /// 照片描述
-    var caption: String
+    var caption: String = ""
 
-    var kitten: Kitten?
+    var kitten: Kitten? = nil
 
     init(
         remoteURL: String = "",
